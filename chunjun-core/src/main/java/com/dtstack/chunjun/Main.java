@@ -125,6 +125,7 @@ public class Main {
             options.setSqlSetConfiguration(SqlParser.parseSqlSet(replacedJob));
         }
         StreamExecutionEnvironment env = EnvFactory.createStreamExecutionEnvironment(options);
+        env.setParallelism(1);
         StreamTableEnvironment tEnv =
                 EnvFactory.createStreamTableEnvironment(env, confProperties, options.getJobName());
         log.info(
