@@ -1,5 +1,5 @@
 CREATE TABLE source
-(   `T1` DATE,
+(   `T1` int,
  	`T2` TIMESTAMP (6),
  	`T3` TIMESTAMP (9),
  	`T4` TIMESTAMP (6)
@@ -15,7 +15,7 @@ CREATE TABLE source
       );
 CREATE TABLE sink
 (
-  `T1` DATE,
+  `T1` int,
  	`T2` TIMESTAMP (6),
  	`T3` TIMESTAMP (9),
  	`T4` TIMESTAMP (6)
