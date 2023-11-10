@@ -18,6 +18,7 @@
 
 package com.dtstack.chunjun.enums;
 
+//todo:写入模式
 public enum EWriteMode {
 
     /** insert into */
