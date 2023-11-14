@@ -1,0 +1,458 @@
+{
+  "比较函数": [
+    {"key":"value1 = value2",
+      "value": "如果 value1 等于 value2 返回 TRUE；如果 value1 或者 value2 为 NULL 返回 UNKNOW。"},
+    {"key": "value1 <> value2",
+      "value": "如果 value1 不等于 value2 返回 TRUE；如果 value1 或 value2 为 NULL 返回 UNKNOWN。"},
+    {"key": "value1 > value2",
+      "value": "如果 value1 大于 value2 返回 TRUE；如果 value1 或 value2 为 NULL 返回 UNKNOWN。"},
+    {"key": "value1 >= value2",
+      "value": "如果 value1 大于或等于 value2 返回 TRUE；如果 value1 或 value2 为 NULL 返回 UNKNOWN。"},
+    {"key": "value1 < value2",
+      "value": "如果 value1 小于 value2 返回 TRUE；如果 value1 或 value2 为 NULL 返回 UNKNOWN。"},
+    {"key": "value1 <= value2",
+      "value": "如果 value1 小于或等于 value2 返回 TRUE；如果 value1 或 value2 为 NULL 返回 UNKNOWN。"},
+    {"key": "value IS NULL",
+      "value": "如果值为 NULL 返回 TRUE。"},
+    {"key": "value IS NOT NULL",
+      "value": "如果值不为 NULL 返回 TRUE。"},
+    {"key": "value1 IN (value2 [, value3]* )",
+      "value": "在给定列表 (value2, value3, …) 中存在 value1 返回 TRUE。当列表包含 NULL，如果可以找到 value1 则返回 TRUE，否则返回 UNKNOWN。如果 value1 为 NULL 则始终返回 UNKNOWN。例如 4 IN (1, 2, 3) 返回 FALSE；1 IN (1, 2, NULL) 返回 TRUE；4 IN (1, 2, NULL) 返回 UNKNOWN。"},
+    {"key": "value1 NOT IN (value2 [, value3]* )",
+      "value": "在给定列表 (value2, value3, …) 中不存在 value1 返回 TRUE。当列表包含 NULL，如果可以找到 value1 则 返回 FALSE，否则返回 UNKNOWN。如果 value1 为 NULL，则始终返回 UNKNOWN。例如 4 NOT IN (1, 2, 3) 返回 TRUE；1 NOT IN (1, 2, NULL) 返回 FALSE；4 NOT IN (1, 2, NULL) 返回 UNKNOWN。"}
+  ],
+  "逻辑函数": [
+    {"key": "boolean1 OR boolean2",
+      "value": "如果 boolean1 为 TRUE 或 boolean2 为 TRUE 返回 TRUE。支持三值逻辑。 例如 true || Null(BOOLEAN) 返回 TRUE。"},
+    {
+      "key": "boolean1 AND boolean2",
+      "value": "如果 boolean1 和 boolean2 都为 TRUE 返回 TRUE。支持三值逻辑。 例如 true && Null(BOOLEAN) 返回 UNKNOWN。"},
+    {
+      "key": "NOT boolean",
+      "value": "如果布尔值为 FALSE 返回 TRUE；如果布尔值为 TRUE 返回 FALSE；如果布尔值为 UNKNOWN 返回 UNKNOWN。"},
+    {
+      "key": "boolean IS FALSE",
+      "value": "如果布尔值为 FALSE 返回 TRUE；如果 boolean 为 TRUE 或 UNKNOWN 返回 FALSE。"},
+    {
+      "key": "boolean IS NOT FALSE",
+      "value": "如果 boolean 为 TRUE 或 UNKNOWN 返回 TRUE；如果 boolean 为 FALSE 返回 FALSE。"},
+    {
+      "key": "boolean IS TRUE",
+      "value": "如果 boolean 为 TRUE 返回 TRUE；如果 boolean 为 FALSE 或 UNKNOWN 返回 FALSE。"},
+    {
+      "key": "boolean IS NOT TRUE",
+      "value": "如果 boolean 为 FALSE 或 UNKNOWN 返回 TRUE；如果布尔值为 TRUE 返回 FALSE。"},
+    {
+      "key": "boolean IS UNKNOWN",
+      "value": "如果布尔值为 UNKNOWN 返回 TRUE；如果 boolean 为 TRUE 或 FALSE 返回 FALSE。"},
+    {
+      "key": "boolean IS NOT UNKNOWN",
+      "value": "如果 boolean 为 TRUE 或 FALSE 返回 TRUE；如果布尔值为 UNKNOWN 返回 FALSE。"}
+  ],
+  "算术函数": [
+    {
+      "key": "numeric1 + numeric2",
+      "value": "返回 numeric1 加 numeric2。"},
+    {
+      "key": "numeric1 - numeric2",
+      "value": "返回 numeric1 减 numeric2。"},
+    {
+      "key": "numeric1 * numberic2",
+      "value": "返回 numeric1 乘以 numeric2。"},
+    {
+      "key": "value",
+      "numeric1 / numeric2": "返回 numeric1 除以 numeric2。"},
+    {
+      "key": "numeric1 % numeric2",
+      "value": "返回 numeric1 除以 numeric2 的余数（模数）。仅当 numeric1 为负时，结果才为负。"},
+    {
+      "key": "POWER(numeric1, numeric2)",
+      "value": "返回 numeric1 的 numeric2 次方。"},
+    {
+      "key": "ABS(numeric)",
+      "value": "返回 numeric 的绝对值。"},
+    {
+      "key": "SQRT(numeric)",
+      "value": "返回 numeric 的平方根。"},
+    {
+      "key": "LN(numeric)",
+      "value": "返回 numeric 的自然对数（以 e 为底）。"},
+    {
+      "key": "LOG10(numeric)",
+      "value": "返回以 10 为底的 numeric 的对数。"},
+    {
+      "key": "LOG2(numeric)",
+      "value": "返回以 2 为底的 numeric 的对数。"},
+    {
+      "key": "LOG(numeric2) LOG(numeric1, numeric2)",
+      "value": "当用一个参数调用时，返回 numeric2 的自然对数。当使用两个参数调用时，此函数返回 numeric2 以 numeric1 为底的对数。numeric2 必须大于 0，numeric1 必须大于 1。"},
+    {
+      "key": "EXP(numeric)",
+      "value": "返回 e 的 numeric 次幂。"},
+    {
+      "key": "CEIL(numeric)",
+      "value": "向上取整，并返回大于或等于 numeric 的最小整数。"},
+    {
+      "key": "FLOOR(numeric)",
+      "value": "向下取整，并返回小于或等于 numeric 的最大整数。"},
+    {
+      "key": "SIN(numeric)",
+      "value": "返回 numeric 的正弦值。"},
+    {
+      "key": "SINH(numeric)",
+      "value": "返回 numeric 的双曲正弦值。返回类型为 DOUBLE。"},
+    {
+      "key": "COS(numeric)",
+      "value": "返回 numeric 的余弦值。"},
+    {
+      "key": "TAN(numeric)",
+      "value": "返回 numeric 的正切值。"},
+    {
+      "key": "TANH(numeric)",
+      "value": "返回 numeric 的双曲正切值。返回类型为 DOUBLE。"},
+    {
+      "key": "COT(numeric)",
+      "value": "返回 numeric 的余切值。"},
+    {
+      "key": "ASIN(numeric)",
+      "value": "返回 numeric 的反正弦值。"},
+    {
+      "key": "ACOS(numeric)",
+      "value": "返回 numeric 的反余弦值。"},
+    {
+      "key": "ATAN(numeric)",
+      "value": "返回 numeric 的反正切值。"},
+    {
+      "key": "ATAN2(numeric1, numeric2)",
+      "value": "返回坐标 (numeric1, numeric2) 的反正切。"},
+    {
+      "key": "COSH(numeric)",
+      "value": "返回 numeric 的双曲余弦值。返回值类型为 DOUBLE。"},
+    {
+      "key": "DEGREES(numeric)",
+      "value": "返回弧度 numeric 的度数表示。"},
+    {
+      "key": "RADIANS(numeric)",
+      "value": "返回度数 numeric 的弧度表示。"},
+    {
+      "key": "SIGN(numeric)",
+      "value": "返回 numeric 的符号。"},
+    {
+      "key": "ROUND(numeric, INT)",
+      "value": "返回 numeric 四舍五入保留 INT 小数位的值。"},
+    {
+      "key": "PI()",
+      "value": "返回无比接近 pi 的值。"},
+    {
+      "key": "E()",
+      "value": "返回无比接近 e 的值。"},
+    {
+      "key": "RAND()",
+      "value": "返回 [0.0, 1.0) 范围内的伪随机双精度值。"},
+    {
+      "key": "RAND(INT)",
+      "value": "返回范围为 [0.0, 1.0) 的伪随机双精度值，初始种子为 INT。 如果两个 RAND 函数具有相同的初始种子，它们将返回相同的数字序列。"},
+    {
+      "key": "RAND_INTEGER(INT)",
+      "value": "返回 [0, INT) 范围内的伪随机整数。"},
+    {
+      "key": "RAND_INTEGER(INT1, INT2)",
+      "value": "返回范围为 [0, INT2) 的伪随机整数，初始种子为 INT1。 如果两个 RAND_INTGER 函数具有相同的初始种子和边界，它们将返回相同的数字序列。"},
+    {
+      "key": "UUID()",
+      "value": "根据 RFC 4122 类型 4（伪随机生成）UUID，返回 UUID（通用唯一标识符）字符串。 例如“3d3c68f7-f608-473f-b60c-b0c44ad4cc4e”，UUID 是使用加密强的伪随机数生成器生成的"},
+    {
+      "key": "BIN(INT)",
+      "value": "以二进制格式返回 INTEGER 的字符串表示形式。如果 INTEGER 为 NULL，则返回 NULL。 例如 4.bin() 返回“100”，12.bin() 返回“1100”。"},
+    {
+      "key": "HEX(numeric) HEX(string)",
+      "value": "以十六进制格式返回整数 numeric 值或 STRING 的字符串表示形式。如果参数为 NULL，则返回 NULL。 例如数字 20 返回“14”，数字 100 返回“64”，字符串“hello,world” 返回“68656C6C6F2C776F726C64”。"},
+    {
+      "key": "TRUNCATE(numeric1, integer2)",
+      "value": "返回截取 integer2 位小数的数字。如果 numeric1 或 integer2 为 NULL，则返回 NULL。 如果 integer2 为 0，则结果没有小数点或小数部分。integer2 可以为负数，使值的小数点左边的 integer2 位变为零。 此函数也可以传入只有一个 numeric1 参数且不设置 Integer2 以使用。如果未设置 Integer2 则 Integer2 为 0。 例如 42.324.truncate(2) 为 42.32，42.324.truncate() 为 42.0。"}
+
+  ],
+  "字符串函数": [
+    {"key":"string1 || string2",
+      "value": "返回 STRING1 和 STRING2 的连接。"},
+    {
+      "key":"CHAR_LENGTH(string) CHARACTER_LENGTH(string)",
+      "value": "返回字符串中的字符数。"},
+    {
+      "key":"UPPER(string)",
+      "value": "以大写形式返回字符串。"},
+    {
+      "key":"LOWER(string)",
+      "value": "以小写形式返回字符串。"},
+    {
+      "key":"POSITION(string1 IN string2)",
+      "value": "返回 STRING2 中第一次出现 STRING1 的位置（从 1 开始）；如果在 STRING2 中找不到 STRING1 返回 0。"},
+    {
+      "key":"TRIM([ BOTH | LEADING | TRAILING ] string1 FROM string2)",
+      "value": "返回从 STRING1 中删除以字符串 STRING2 开头/结尾/开头且结尾的字符串的结果。默认情况下，两边的空格都会被删除。"},
+    {
+      "key":"LTRIM(string)",
+      "value": "返回从 STRING 中删除左边空格的字符串。 例如 ' This is a test String.'.ltrim() 返回 'This is a test String.'。"},
+    {
+      "key":"RTRIM(string)",
+      "value": "返回从 STRING 中删除右边空格的字符串。 例如 'This is a test String. '.ltrim() 返回 'This is a test String.'。"},
+    {
+      "key":"REPEAT(string, int)",
+      "value": "返回 INT 个 string 连接的字符串。 例如 REPEAT('This is a test String.', 2) 返回 \"This is a test String.This is a test String.\"。"},
+    {
+      "key":"REGEXP_REPLACE(string1, string2, string3)",
+      "value": "返回 STRING1 所有与正则表达式 STRING2 匹配的子字符串被 STRING3 替换后的字符串。 例如 'foobar'.regexpReplace('oo|ar', '') 返回 \"fb\"。"},
+    {
+      "key":"REPLACE(string1, string2, string3)",
+      "value": "返回一个新字符串，它用 STRING1 中的 STRING3（非重叠）替换所有出现的 STRING2。 例如 'hello world'.replace('world', 'flink') 返回 'hello flink'； 'ababab'.replace('abab', 'z') 返回 'zab'。"},
+    {
+      "key":"REGEXP_EXTRACT(string1, string2[, integer])",
+      "value": "将字符串 STRING1 按照 STRING2 正则表达式的规则拆分，返回指定 INTEGER1 处位置的字符串。正则表达式匹配组索引从 1 开始， 0 表示匹配整个正则表达式。此外，正则表达式匹配组索引不应超过定义的组数。 例如 REGEXP_EXTRACT('foothebar', 'foo(.*?)(bar)', 2) 返回 \"bar\"。"},
+    {
+      "key":"INITCAP(string)",
+      "value": "返回新形式的 STRING，其中每个单词的第一个字符转换为大写，其余字符转换为小写。这里的单词表示字母数字的字符序列。"},
+    {
+      "key":"CONCAT(string1, string2, …)",
+      "value": "返回连接 string1，string2， … 的字符串。如果有任一参数为 NULL，则返回 NULL。 例如 CONCAT('AA', 'BB', 'CC') 返回 \"AABBCC\"。"},
+    {
+      "key":"CONCAT_WS(string1, string2, string3, …)",
+      "value": "返回将 STRING2， STRING3， … 与分隔符 STRING1 连接起来的字符串。在要连接的字符串之间添加分隔符。 如果 STRING1 为 NULL，则返回 NULL。与 concat() 相比，concat_ws() 会自动跳过 NULL 参数。 例如 concat_ws('~', 'AA', Null(STRING), 'BB', '', 'CC') 返回 \"AA~BB~~CC\"."},
+    {
+      "key":"LPAD(string1, integer, string2)",
+      "value": "返回从 string1 靠左填充 string2 到 INT 长度的新字符串。如果 string1 的长度小于 INT 值，则返回 string1 缩 短为整数字符。例如 LPAD('hi', 4, '??') 返回 \"??hi\"；LPAD('hi', 1, '??') 返回 `“h”。"},
+    {
+      "key":"RPAD(string1, integer, string2)",
+      "value": "返回从 string1 靠右边填充 string2 到 INT 长度的新字符串。如果 string1 的长度小于 INT 值，则返回 string1 缩 短为长度为 INT 的新字符串。例如 RPAD('hi', 4, '??') 返回 \"hi??\", RPAD('hi', 1, '??') 返回 \"h\"。"},
+    {
+      "key":"FROM_BASE64(string)",
+      "value": "返回字符串 string1 的 base64 解码的结果；如果字符串为 NULL，则返回 NULL。 例如 FROM_BASE64('aGVsbG8gd29ybGQ=') 返回 \"hello world\"。"},
+    {
+      "key":"TO_BASE64(string)",
+      "value": "返回字符串 string 的 base64 编码的结果；如果字符串为 NULL，则返回 NULL。 例如 TO_BASE64('hello world') 返回 \"aGVsbG8gd29ybGQ=\"。"},
+    {
+      "key":"ASCII(string)",
+      "value": "返回字符串 string 第一个字符的数值。如果字符串为 NULL 则返回 NULL。 例如 ascii('abc') 返回 97，ascii(CAST(NULL AS VARCHAR)) 返回 NULL。"},
+    {
+      "key":"CHR(integer)",
+      "value": "返回二进制等于 integer 的 ASCII 字符。如果整数 integer 大于 255，我们先将得到整数对 255 取模数， 并返回模数的 CHR。如果整数为 NULL，则返回 NULL。例如 chr(97) 返回 a，chr(353) 返回 a， ascii(CAST(NULL AS VARCHAR)) 返回 NULL。"},
+    {
+      "key":"DECODE(binary, string)",
+      "value": "使用提供的字符集（‘US-ASCII’，‘ISO-8859-1’，‘UTF-8’，‘UTF-16BE’，‘UTF-16LE’，‘UTF-16’）解码。 如果任一参数为空，则结果也将为空。"},
+    {
+      "key":"ENCODE(string1, string2)",
+      "value": "使用提供的字符集（‘US-ASCII’，‘ISO-8859-1’，‘UTF-8’，‘UTF-16BE’，‘UTF-16LE’，‘UTF-16’）编码。 如果任一参数为空，则结果也将为空。"},
+    {
+      "key":"REGEXP(string1, string2)",
+      "value": "如果 string1 的任何（可能为空）子字符串与 Java 正则表达式 string2 匹配，则返回 TRUE，否则返回 FALSE。 如果有任一参数为 NULL，则返回 NULL。"},
+    {
+      "key":"REVERSE(string)",
+      "value": "返回反转的字符串。如果字符串为 NULL，则返回 NULL。"},
+    {
+      "key":"SPLIT_INDEX(string1, string2, integer1)",
+      "value": "通过分隔符 string2 拆分 string1，返回分隔后这组字符串的第 integer（从零开始）个字符串。如果整数为负，则返回 NULL。 如果有任一参数为 NULL，则返回 NULL。"},
+    {
+      "key":"STR_TO_MAP(string1[, string2, string3])",
+      "value": "使用分隔符将 string1 拆分为键值对后返回一个 map。string2 是 pair 分隔符，默认为 ‘,’。string3 是键值分隔符，默认为 ‘=’。 pair 分隔符与键值分隔符均为正则表达式，当使用特殊字符作为分隔符时请提前进行转义，例如 <([{\\^-=$!|]})?*+.>。"},
+    {
+      "key":"SUBSTR(string, integer1[, integer2])",
+      "value": "返回字符串的子字符串，从位置 integer1 开始，长度为 integer2（默认到末尾）。"}
+
+  ],
+  "时间函数": [
+    {
+      "key":"NOW()",
+      "value": "返回本地时区的当前 SQL 时间戳，这是 CURRENT_TIMESTAMP 的同义词。"},
+    {
+      "key":"CURRENT_ROW_TIMESTAMP()",
+      "value": "返回本地时区的当前 SQL 时间戳，返回类型为 TIMESTAMP_LTZ(3)。无论是在批处理模式还是流模式下，都会为每条记录进行取值。"},
+    {
+      "key":"YEAR(date)",
+      "value": "从 SQL 日期 date 返回年份。相当于 EXTRACT(YEAR FROM date)。例如 YEAR(DATE '1994-09-27') 返回 1994。"},
+    {
+      "key":"QUARTER(date)",
+      "value": "从 SQL 日期 date 返回一年中的季度（1 到 4 之间的整数）。相当于 EXTRACT(QUARTER FROM date)。 例如 QUARTER(DATE '1994-09-27') 返回 3。"},
+    {
+      "key":"MONTH(date)",
+      "value": "从 SQL 日期 date 返回一年中的月份（1 到 12 之间的整数）。相当于 EXTRACT(MONTH FROM date)。 例如 MONTH(DATE '1994-09-27') 返回 9。"},
+    {
+      "key":"WEEK(date)",
+      "value": "从 SQL 日期 date 返回一年中的第几周（1 到 53 之间的整数）。相当于 EXTRACT(WEEK FROM date)。 例如 WEEK(DATE '1994-09-27') 返回 39。"},
+    {
+      "key":"DAYOFYEAR(date)",
+      "value": "从 SQL 日期 date 返回一年中的第几天（1 到 366 之间的整数）。相当于 EXTRACT(DOY FROM date)。 例如 DAYOFYEAR(DATE '1994-09-27') 返回 270。"},
+    {
+      "key":"DAYOFMONTH(date)",
+      "value": "从 SQL 日期 date 返回一个月中的第几天（1 到 31 之间的整数）。相当于 EXTRACT(DAY FROM date)。 例如 DAYOFMONTH(DATE '1994-09-27') 返回 27。"},
+    {
+      "key":"DAYOFWEEK(date)",
+      "value": "从 SQL 日期 date 返回一个星期中的第几天（1 到 7 之间的整数）。相当于 EXTRACT(DOW FROM date)。 例如 DAYOFWEEK(DATE '1994-09-27') 返回 3。"},
+    {
+      "key":"HOUR(timestamp)",
+      "value": "从 SQL 时间戳 timestamp 返回小时单位部分的小时（0 到 23 之间的整数）数。相当于 EXTRACT(HOUR FROM timestamp)。 例如 MINUTE(TIMESTAMP '1994-09-27 13:14:15') 返回 14。"},
+    {
+      "key":"MINUTE(timestamp)",
+      "value": "从 SQL 时间戳 timestamp 返回分钟单位的分钟数（0 到 59 之间的整数）。相当于 EXTRACT(MINUTE FROM timestamp)。 例如 MINUTE(TIMESTAMP '1994-09-27 13:14:15') 返回 14。"},
+    {
+      "key":"SECOND(timestamp)",
+      "value": "从 SQL 时间戳 timestamp 返回秒单位部分的秒数（0 到 59 之间的整数）。相当于 EXTRACT(SECOND FROM timestamp)。 例如 SECOND(TIMESTAMP '1994-09-27 13:14:15') 返回 15。"},
+    {
+      "key":"FLOOR(timepoint TO timeintervalunit)",
+      "value": "返回将时间点 timepoint 向下取值到时间单位 timeintervalunit 的值。例如 FLOOR(TIME '12:44:31' TO MINUTE) 返回 12:44:00。"},
+    {
+      "key":"CEIL(timespoint TO timeintervaluntit)",
+      "value": "返回将时间点 timespoint 向上取值到时间单位 TIMEINTERVALUNIT 的值。例如 CEIL(TIME '12:44:31' TO MINUTE) 返回 12:45:00。"},
+    {
+      "key":"DATE_FORMAT(timestamp, string)",
+      "value": "将时间戳 timestamp 转换为日期格式字符串 string 指定格式的字符串值。格式字符串与 Java 的 SimpleDateFormat 兼容。"},
+    {
+      "key":"CONVERT_TZ(string1, string2, string3)",
+      "value": "将日期时间 string1（具有默认 ISO 时间戳格式 ‘yyyy-MM-dd HH:mm:ss’）从时区 string2 转换为时区 string3 的值。 时区的格式应该是缩写如“PST”，全名如“America/Los_Angeles”，或自定义 ID 如“GMT-08:00”。例如 CONVERT_TZ('1970-01-01 00:00:00', 'UTC', 'America/Los_Angeles') 返回 '1969-12-31 16:00:00’。"},
+    {
+      "key":"FROM_UNIXTIME(numeric[, string])",
+      "value": "以字符串格式 string 返回数字参数 numberic 的表示形式（默认为 ‘yyyy-MM-dd HH:mm:ss’）。numeric 是一个内部 时间戳值，表示自'1970-01-01 00:00:00’ UTC 以来的秒数，由 UNIX_TIMESTAMP() 函数生成。返回值以会话时区表示 （在 TableConfig 中指定）。例如，如果在 UTC 时区，FROM_UNIXTIME(44) 返回 ‘1970-01-01 00:00:44’，如果在 ‘Asia/Tokyo’ 时区，则返回 ‘1970-01-01 09:00:44’。"},
+    {
+      "key":"UNIX_TIMESTAMP()",
+      "value": "以秒为单位获取当前的 Unix 时间戳。此函数不是确定性的，这意味着将为每个记录重新计算该值。"},
+    {
+      "key":"UNIX_TIMESTAMP(string1[, string2])",
+      "value": "使用表配置中指定的时区将格式为 string2 的日期时间字符串 string1（如果未指定默认情况下：yyyy-MM-dd HH:mm:ss） 转换为 Unix 时间戳（以秒为单位）。"},
+    {
+      "key":"TO_DATE(string1[, string2])",
+      "value": "将格式为 string2（默认为 ‘yyyy-MM-dd’）的字符串 string1 转换为日期。"},
+    {
+      "key":"TO_TIMESTAMP_LTZ(numeric, precision)",
+      "value": "将纪元秒或纪元毫秒转换为 TIMESTAMP_LTZ，有效精度为 0 或 3，0 代表 TO_TIMESTAMP_LTZ(epochSeconds, 0)， 3 代表 TO_TIMESTAMP_LTZ(epochMilliseconds, 3)。"},
+    {
+      "key":"TO_TIMESTAMP(string1[, string2])",
+      "value": "将格式为 string2（默认为：‘yyyy-MM-dd HH:mm:ss’）的字符串 string1 转换为 timestamp，不带时区。"},
+    {
+      "key":"CURRENT_WATERMARK(rowtime)",
+      "value": "返回给定时间列属性 rowtime 的当前水印，如果管道中的当前操作没有可用的上游操作的公共水印时则为 NULL。 函数的返回类型被推断为与提供的时间列属性匹配，但调整后的精度为 3。例如时间列属性为 TIMESTAMP_LTZ(9)，则函数将返回 TIMESTAMP_LTZ(3)。\n\n请注意，此函数可以返回 NULL，您可能必须考虑这种情况。例如，如果您想过滤掉后期数据，您可以使用：WHERE\n  CURRENT_WATERMARK(ts) IS NULL\n  OR ts > CURRENT_WATERMARK(ts)"}
+  ],
+  "条件函数": [
+    {"key": "CASE value WHEN value1_1 [, value1_2]* THEN RESULT1 (WHEN value2_1 [, value2_2 ]* THEN result_2)* (ELSE result_z) END",
+    "value": "当第一个时间值包含在 (valueX_1, valueX_2, …) 中时，返回 resultX。当没有值匹配时，如果提供则返回 result_z， 否则返回 NULL。"},
+    {"key": "CASE WHEN condition1 THEN result1 (WHEN condition2 THEN result2)* (ELSE result_z) END",
+      "value": "满足第一个条件 X 时返回 resultX。当不满足任何条件时，如果提供则返回 result_z，否则返回 NULL。"},
+    {"key": "NULLIF(value1, value2)",
+      "value": "如果 value1 等于 value2 返回 NULL；否则返回 value1。例如 NULLIF(5, 5) 返回 NULL；NULLIF(5, 0) 返回 5。"},
+    {"key": "COALESCE(value1, value2 [, value3]*)",
+      "value": "从 value1, value2, … 返回第一个不为 NULL 的值。例如 COALESCE(3, 5, 3) 返回 3。"},
+    {"key": "IF(condition, true_value, false_value)",
+      "value": "如果满足条件，则返回 true_value，否则返回 false_value。例如 IF(5 > 3, 5, 3) 返回 5。"},
+    {"key": "IFNULL(input, null_replacement)",
+      "value": "如果输入为 NULL，则返回 null_replacement；否则返回输入。与 COALESCE 或 CASE WHEN 相比，此函数返回的数据类型 在是否为空方面非常明确。。返回的类型是两个参数的公共类型，但只有在 null_replacement 可为空时才能为空。该函数允许将可 为空的列传递到使用 NOT NULL 约束声明的函数或表中。例如 IFNULL(nullable_column, 5) 一定不返回 NULL。"},
+    {"key": "IS_ALPHA(string)",
+      "value": "如果字符串中的所有字符都是字母，则返回 true，否则返回 false。"},
+    {"key": "IS_DECIMAL(string)",
+      "value": "如果 string 可以解析为有效数字，则返回 true，否则返回 false。"},
+    {"key": "IS_DIGIT(string)",
+      "value": "如果字符串中的所有字符都是数字，则返回 true，否则返回 false。"},
+    {"key": "GREATEST(value1[, value2]*)",
+      "value": "返回所有输入参数的最大值，如果输入参数中包含 NULL，则返回 NULL。"},
+    {"key": "LEAST(value1[, value2]*)",
+      "value": "返回所有输入参数的最小值，如果输入参数中包含 NULL，则返回 NULL。"}
+  ],
+  "类型转换函数": [{"key": "CAST(value AS type)",
+    "value": "返回被强制转换为类型 type 的新值。例如 CAST('42' AS INT) 返回 42； CAST(NULL AS VARCHAR) 返回 VARCHAR 类型的 NULL。"},
+    {"key": "TYPEOF(input) | TYPEOF(input, force_serializable)",
+      "value": "返回输入表达式的数据类型的字符串表示形式。默认情况下返回的字符串是一个摘要字符串，可能会为了可读性而省略某些细节。 如果 force_serializable 设置为 TRUE，则字符串表示可以保留在目录中的完整数据类型。请注意， 特别是匿名的内联数据类型没有可序列化的字符串表示。在这种情况下返回 NULL。"}
+  ],
+  "集合函数": [{"key": "CARDINALITY(array)",
+  "value": "返回数组中元素的数量。"},
+    {"key": "array ‘[’ INT ‘]’",
+      "value": "返回数组中 INT 位置的元素。索引从 1 开始。"},
+    {"key": "ELEMENT(array)",
+      "value": "返回数组的唯一元素（其基数应为 1）；如果数组为空，则返回 NULL。如果数组有多个元素，则抛出异常。"},
+    {"key": "CARDINALITY(map)",
+      "value": "返回 map 中的 entries 数量。"},
+    {"key": "ARRAY_CONCAT(array1, …)",
+      "value": "返回一个数组，该数组是连接至少一个数组的结果。该数组包含第一个数组中的所有元素，然后是第二个数组中的所有元素，依此类推，直到第 N 个数组。如果任何输入数组为 NULL，则函数返回 NULL。"},
+    {"key": "map ‘[’ value ‘]’",
+      "value": "返回 map 中指定 key 对应的值。"},
+    {"key": "ARRAY_CONTAINS(haystack, needle)",
+      "value": "返回给定元素是否存在于数组中。支持检查数组中的空元素。如果数组本身为空，则该函数将返回空。"},
+    {"key": "ARRAY_DISTINCT(haystack)",
+      "value": "返回具有唯一元素的数组。如果数组本身为空，则该函数将返回空。保持元素的顺序。"},
+    {"key": "ARRAY_POSITION(haystack, needle)",
+      "value": "返回给定数组中元素第一次出现的位置。如果在数组中找不到给定的值，则返回0。如果参数中的任何一个为空，则返回空。从1开始，数组中的第一个元素的索引为1。"},
+    {"key": "ARRAY_REMOVE(haystack, needle)",
+      "value": "从数组中移除所有等于element的元素。如果数组本身为空，则该函数将返回空。保持元素的顺序。"},
+    {"key": "ARRAY_REVERSE(haystack)",
+      "value": "以相反顺序返回数组。如果数组本身为空，则该函数将返回空。"},
+    {"key": "ARRAY_SLICE(array, start_offset[, end_offset])",
+      "value": "返回输入数组的子数组，位于“start_offset”和“end_offset”之间 包含“start_offset”和“end_offset”）。偏移量从 1 开始，但 0 也被视为数组的开头。正值从数组开头开始计数， 负值从数组末尾开始计数。如果省略“end_offset”，则该偏移量将被视为数组的长度。如果“start_offset”在 “end_offset”之后或者两者都超出数组范围，则将返回空数组。如果任何输入为 null，则返回 null。"},
+    {"key": "ARRAY_UNION(array1, array2)",
+      "value": "返回array1和array2的并集元素的数组，不包含重复项。如果数组中有任何一个为空，该函数将返回空。"},
+    {"key": "MAP_KEYS(map)",
+      "value": "将映射的键返回为数组。没有顺序保证"},
+    {"key": "MAP_VALUES(map)",
+      "value": "将映射的值返回为数组。没有顺序保证"},
+    {"key": "MAP_ENTRIES(map)",
+      "value": "返回给定map中所有条目的数组。没有顺序保证。"},
+    {"key": "MAP_FROM_ARRAYS(array_of_keys, array_of_values)",
+      "value": "返回由键和值数组创建的map。注意，两个数组的长度应该相同。"}
+  ],
+  "值构建函数": [
+    {"key": "ARRAY ‘[’ value1 [, value2 ]* ‘]’",
+    "value": "返回从值列表 (value1, value2, …) 创建的数组。"},
+    {"key": "MAP ‘[’ value1, value2 [, value3, value4 ]* ‘]’",
+      "value": "返回从键值对列表 ((value1, value2), (value3, value4), …) 创建的 map。"}
+  ],
+  "哈希函数": [
+    {"key": "MD5(string)",
+      "value": "以 32 个十六进制数字的字符串形式返回 string 的 MD5 哈希值；如果字符串为 NULL，则返回 NULL。"},
+    {"key": "SHA1(string)",
+      "value": "以 40 个十六进制数字的字符串形式返回 string 的 SHA-1 哈希值；如果字符串为 NULL，则返回 NULL。"},
+    {"key": "SHA224(string)",
+      "value": "以 56 个十六进制数字的字符串形式返回 string 的 SHA-224 哈希值；如果字符串为 NULL，则返回 NULL。"},
+    {"key": "SHA256(string)",
+      "value": "以 64 个十六进制数字的字符串形式返回 string 的 SHA-256 哈希值；如果字符串为 NULL，则返回 NULL。"},
+    {"key": "SHA384(string)",
+      "value": "以 96 个十六进制数字的字符串形式返回 string 的 SHA-384 哈希值；如果字符串为 NULL，则返回 NULL。"},
+    {"key": "SHA512(string)",
+      "value": "以 128 个十六进制数字的字符串形式返回 string 的 SHA-512 哈希值；如果字符串为 NULL，则返回 NULL。"},
+    {"key": "SHA2(string, hashLength)",
+      "value": "使用 SHA-2 系列散列函数（SHA-224，SHA-256，SHA-384 或 SHA-512）返回散列值。第一个参数字符串是要散列的字符串， 第二个参数 hashLength 是结果的位长（224，256，384 或 512）。如果 string 或 hashLength 为 NULL，则返回 NULL。"}
+  ],
+  "聚合函数": [
+    {"key": "COUNT([ ALL ] expression | DISTINCT expression1 [, expression2]*)",
+    "value": "默认情况下或使用关键字 ALL，返回不为 NULL 的表达式的输入行数。使用 DISTINCT 则对所有值去重后计算。"},
+    {"key": "COUNT(*) | COUNT(1)",
+      "value": "返回输入行数。"},
+    {"key": "AVG([ ALL | DISTINCT ] expression)",
+      "value": "默认情况下或使用关键字 ALL，返回所有输入行中表达式的平均值（算术平均值）。使用 DISTINCT 则对所有值去重后计算。"},
+    {"key": "SUM([ ALL | DISTINCT ] expression)",
+      "value": "默认情况下或使用关键字 ALL，返回所有输入行的表达式总和。使用 DISTINCT 则对所有值去重后计算。"},
+    {"key": "MAX([ ALL | DISTINCT ] expression)",
+      "value": "默认情况下或使用关键字 ALL，返回所有输入行中表达式的最大值。使用 DISTINCT 则对所有值去重后计算。"},
+    {"key": "MIN([ ALL | DISTINCT ] expression )",
+      "value": "默认情况下或使用关键字 ALL，返回所有输入行中表达式的最小值。使用 DISTINCT 则对所有值去重后计算。"},
+    {"key": "RANK()",
+      "value": "返回值在一组值中的排名。结果是 1 加上分区顺序中当前行之前或等于当前行的行数。排名在序列中不一定连续。"},
+    {"key": "DENSE_RANK()",
+      "value": "返回值在一组值中的排名。结果是一加先前分配的等级值。与函数 rank 不同，dense_rank 不会在排名序列中产生间隙。"},
+    {"key": "ROW_NUMBER()",
+      "value": "在窗口分区内根据 rows 的排序为每一行分配一个唯一的序列号，从一开始。ROW_NUMBER 和 RANK 相似。ROW_NUMBER 按 顺序对所有行进行编号（例如 1，2，3，4，5）。RANK 为等值 row 提供相同的序列值（例如 1，2，2，4，5）。"},
+    {"key": "LEAD(expression [, offset] [, default])",
+      "value": "返回窗口中当前行之后第 offset 行处的表达式值。offset 的默认值为 1，default 的默认值为 NULL。"},
+    {"key": "LAG(expression [, offset] [, default])",
+      "value": "返回窗口中当前行之前第 offset 行处的表达式值。offset 的默认值为 1，default 的默认值为 NULL。"},
+    {"key": "FIRST_VALUE(expression)",
+      "value": "返回一组有序值中的第一个值。"},
+    {"key": "LAST_VALUE(expression)",
+      "value": "返回一组有序值中的最后一个值。"},
+    {"key": "LISTAGG(expression [, separator])",
+      "value": "连接字符串表达式的值并在它们之间放置分隔符值。字符串末尾不添加分隔符时则分隔符的默认值为“,”。"},
+    {"key": "CUME_DIST()",
+      "value": "返回值在一组值的累积分布。结果是小于或等于当前行的值的行数除以窗口分区的总行数"},
+    {"key": "PERCENT_RANK()",
+      "value": "返回值在一组值的百分比排名。结果是当前行在窗口分区中的排名减 1，然后除以窗口分区的总行数减 1。如果窗口分区的总行数为 1，则该函数返回 0。"},
+    {"key": "NTILE(n)",
+      "value": "将窗口分区中的所有数据按照顺序划分为 n 个分组，返回分配给各行数据的分组编号（从 1 开始）。 如果不能均匀划分为 n 个分组，则从第 1 个分组开始，为每一分组分配一个剩余值。 比如某个窗口分区有 6 行数据，划分为 4 个分组，则各行的分组编号为：1，1，2，2，3，4。"},
+    {"key": "JSON_OBJECTAGG([KEY] key VALUE value [ { NULL | ABSENT } ON NULL ])",
+      "value": "通过将 key-value 聚合到单个 JSON 对象中，构建 JSON 对象字符串。\n\n键表达式必须返回不为空的字符串。值表达式可以是任意的，包括其他 JSON 函数。 如果值为 NULL，则 ON NULL 行为定义了要执行的操作。如果省略，默认情况下假定为 NULL ON NULL。\n\n请注意，键必须是唯一的。如果一个键出现多次，将抛出一个错误。\n\n目前在 OVER windows 中不支持此函数。\n\n-- '{\"Apple\":2,\"Banana\":17,\"Orange\":0}'\nSELECT\n  JSON_OBJECTAGG(KEY product VALUE cnt)\nFROM orders"},
+    {"key": "JSON_ARRAYAGG(items [ { NULL | ABSENT } ON NULL ])",
+      "value": "通过将字段聚合到数组中构建 JSON 对象字符串。\n\n项目表达式可以是任意的，包括其他 JSON 函数。如果值为 NULL，则 ON NULL 行为定义了要执行的操作。如果省略，默认情况下假定为 ABSENT ON NULL。\n\n此函数目前不支持 OVER windows、未绑定的 session windows 或 hop windows。\n\n-- '[\"Apple\",\"Banana\",\"Orange\"]'\nSELECT\n  JSON_ARRAYAGG(product)\nFROM orders"}
+  ]
+}
