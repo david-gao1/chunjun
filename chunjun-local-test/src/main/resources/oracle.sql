@@ -1,26 +1,25 @@
 CREATE TABLE source
-(   `id` int,
- 	`username` varchar,
- 	`age` int
+(     `id` int,
+      `name` string,
+      `face` string
 ) WITH (
-  'connector' = 'binlog-x'
-      ,'username' = 'root'
-      ,'password' = '11111111'
-      ,'cat' = 'insert,delete,update'
-      ,'url' = 'jdbc:mysql://10.17.31.234:3306/360test'
-      ,'host' = '10.17.31.234'
-      ,'port' = '3306'
-      -- 什么都不加：最新位置消费
-      -- 加文件名，从此文件开头消费
-      -- ,'journal-name' = 'binlog.000194'
-        ,'timestamp'='1699447812000'
-      ,'table' = '360test.dimension_table'
-      ,'timestamp-format.standard' = 'SQL'
+      'password' = '123456',
+      'timestamp-format.standard' = 'SQL',
+      'connector' = 'binlog-x',
+      'port' = '3306',
+      'cat' = 'insert,update,delete',
+      'host' = '10.202.254.219',
+      'connection-charset' = 'utf-8',
+      'url' = 'jdbc:mysql://10.202.254.219:3306/northwind_demo?useunicode=true&characterEncoding=utf8&useSSL=false&useCursorFetch=true',
+      'table' = 'tjy_test1_ss',
+--      'timestamp' = '0',
+      --'journal-name' = 'mysql-bin.000227',
+      'username' = 'root'
       );
 CREATE TABLE sink
-(   `id` int,
- 	`username` varchar,
- 	`age` int
+(     `id` int,
+      `name` string,
+      `face` string
 ) WITH (
        'connector' = 'print'
       );
