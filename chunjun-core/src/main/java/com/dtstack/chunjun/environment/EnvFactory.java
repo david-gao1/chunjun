@@ -58,6 +58,7 @@ public class EnvFactory {
         }
         env.getConfig().disableClosureCleaner();
         env.getConfig().setGlobalJobParameters(cfg);
+        env.setParallelism(1);
         return env;
     }
 
